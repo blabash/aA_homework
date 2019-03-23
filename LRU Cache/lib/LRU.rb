@@ -1,6 +1,10 @@
 require 'byebug'
 class LRUCache
+    attr_reader :cache, :size
     def initialize(size = 4)
+        unless size.is_a?(Integer) && size > 0
+            raise ArgumentError.new('input must be a positive integer') 
+        end
         @cache = []
         @size = size
         # @idx = 0
